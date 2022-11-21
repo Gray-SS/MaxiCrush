@@ -1,0 +1,59 @@
+﻿<Window x:Class="MaxiCrush.AdminViewControl.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaxiCrush.AdminViewControl"
+        xmlns:Icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        Title="Login Page" Height="450" Width="320">
+    <Border Background="#404258"
+            CornerRadius="15">
+        <StackPanel Width="125"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+            <Grid Margin="0, 0, 0, 20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Icons:PackIconMaterial Kind="Account" Width="15" Height="15"
+                                        VerticalAlignment="Center"
+                                        Foreground="DarkGray"
+                                        Margin="0, 0, 7, 0"/>
+                <TextBox Foreground="Black" Width="100"
+                         Grid.Column="1" x:Name="usernameTextBox"/>
+            </Grid>
+
+            <Grid Margin="0, 0, 0, 35">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Icons:PackIconMaterial Kind="FormTextboxPassword" Width="15" Height="15"
+                                        VerticalAlignment="Center"
+                                        Foreground="DarkGray"
+                                        Margin="0, 0, 7, 0"/>
+                <PasswordBox Foreground="Black" Width="100" PasswordChar="*"
+                             Grid.Column="1" x:Name="passwordTextBox"/>
+            </Grid>
+
+            <Button Style="{StaticResource LoginButton}"
+                    Height="25"
+                    Click="Button_Click">
+                <TextBlock Foreground="Black"
+                               Grid.Column="1" Text="Confirm"
+                               HorizontalAlignment="Center"/>
+            </Button>
+        </StackPanel>
+    </Border>
+</Window>

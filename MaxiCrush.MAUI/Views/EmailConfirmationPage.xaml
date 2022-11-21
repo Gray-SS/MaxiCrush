@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MaxiCrush.MAUI.Controls"
+             x:Class="MaxiCrush.MAUI.Views.EmailConfirmationPage"
+             Title="EmailConfirmationPage"
+             BackgroundColor="{StaticResource Secondary}">
+    
+    <VerticalStackLayout Grid.Row="0"
+                             Margin="30, 60"
+                             Spacing="15">
+        <Label Style="{StaticResource primary_header_label_style}"
+                   Text="Entrez votre code !"/>
+
+        <Label Style="{StaticResource description_label_style}"
+                   Text="Vous avez normalement reçu un code de confirmation sur votre adresse UCLouvain, pensez à checker vos courriers indésirable."/>
+
+        <controls:RoundedEntry Style="{StaticResource primary_entry_style}"
+                                   Placeholder=""
+                                   x:Name="codeEntryInput"
+                                   Margin="0, 20, 0, 0"/>
+
+        <controls:LoadButton x:Name="confirmButton"
+                                     Text="Continuer"
+                                     LoadingText="Veuillez patienter"
+                                     Style="{StaticResource terniary_loading_button_style}"
+                                     Margin="0, 50, 0, 0"
+                                     SpacingBetweenItems="10"
+                                     Tapped="ContinueButtonClicked"/>
+
+        <Label Style="{StaticResource description_label_style}"
+                   Text="En cas de problème veuillez contacter le support technique"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

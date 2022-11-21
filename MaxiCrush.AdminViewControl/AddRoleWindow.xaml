@@ -1,0 +1,45 @@
+﻿<Window x:Class="MaxiCrush.AdminViewControl.AddRoleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaxiCrush.AdminViewControl" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" d:DataContext="{d:DesignInstance Type=local:AddRoleViewModel}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Add Role" Height="350" Width="250">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+        <Grid Width="200" HorizontalAlignment="Right">
+            <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Name"
+                           Visibility="{Binding ElementName=roleNameTextBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+
+            <TextBox Name="roleNameTextBox" Style="{StaticResource searchTextbox}"
+                     Text="{Binding Name}"/>
+
+            <Icon:PackIconMaterial Kind="MagicStaff" Width="15" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#B0B9C6" HorizontalAlignment="Right" />
+        </Grid>
+
+        <Grid Width="200" HorizontalAlignment="Right">
+            <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Power"
+                           Visibility="{Binding ElementName=powerTextBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+
+            <TextBox Name="powerTextBox" Style="{StaticResource searchTextbox}"
+                     Text="{Binding Power}"/>
+
+            <Icon:PackIconMaterial Kind="ArmFlex" Width="15" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#B0B9C6" HorizontalAlignment="Right" />
+        </Grid>
+
+        <Button Style="{StaticResource AddButton}"
+                Margin="0, 20"
+                Command="{Binding AddRoleCommand}">
+            <TextBlock Text="Create"/>
+        </Button>
+        
+    </StackPanel>
+</Window>

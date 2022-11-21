@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers"
+             xmlns:controls="clr-namespace:MaxiCrush.MAUI.Controls"
+             xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:Class="MaxiCrush.MAUI.Views.EmailRegistrationPage"
+             Title="EmailRegistrationPage"
+             BackgroundColor="{StaticResource Secondary}">
+
+    <ContentPage.Content>
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+            </Grid.RowDefinitions>
+
+            <VerticalStackLayout Grid.Row="0"
+                            Margin="30, 0"
+                            Spacing="15">
+                <Label Style="{StaticResource primary_header_label_style}"
+               Text="Quel est votre adresse UCLouvain ?"
+               Margin="0, 60, 0, 0"
+               x:Name="titlePageLabel"/>
+
+                <Label Style="{StaticResource description_label_style}"
+                       Text="Votre adresse sera utilisée afin de prouver votre appartenance à l'université."
+                       x:Name="descriptionPageLabel"/>
+
+
+                <Label HorizontalOptions="Start"
+               VerticalOptions="Start"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Start"
+               FontSize="14"
+               TextColor="{StaticResource Primary}"
+               FontAttributes="Bold"
+               FontFamily="OpenSansRegular"
+               Text="Email"
+               Margin="0, 25, 0, 0"/>
+
+                <controls:RoundedEntry Placeholder="Saisissez votre adresse UCLouvain"
+                                       Style="{StaticResource primary_entry_style}"
+                                       x:Name="emailEntryInput"/>
+
+                <controls:LoadButton x:Name="confirmButton"
+                                     Text="Continuer"
+                                     LoadingText="Veuillez patienter"
+                                     Style="{StaticResource terniary_loading_button_style}"
+                                     Margin="0, 25, 0, 0"
+                                     SpacingBetweenItems="10"
+                                     Tapped="ContinueButtonClicked"/>
+
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

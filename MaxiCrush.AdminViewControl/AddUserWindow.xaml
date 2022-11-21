@@ -1,0 +1,83 @@
+﻿<Window x:Class="MaxiCrush.AdminViewControl.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaxiCrush.AdminViewControl" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" d:DataContext="{d:DesignInstance Type=local:AddRoleViewModel}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Add User" Height="500" Width="250">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+        <Grid Width="200" HorizontalAlignment="Right">
+            <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Firstname"
+                           Visibility="{Binding ElementName=firstnameTextBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+
+            <TextBox Name="firstnameTextBox" Style="{StaticResource searchTextbox}"
+                     Text="{Binding Firstname}"/>
+        </Grid>
+
+        <Grid Width="200" HorizontalAlignment="Right">
+            <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Lastname"
+                           Visibility="{Binding ElementName=lastnameTextBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+
+            <TextBox Name="lastnameTextBox" Style="{StaticResource searchTextbox}"
+                     Text="{Binding Lastname}"/>
+        </Grid>
+
+        <Grid Width="200" HorizontalAlignment="Right">
+            <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Email"
+                           Visibility="{Binding ElementName=emailTextBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+
+            <TextBox Name="emailTextBox" Style="{StaticResource searchTextbox}"
+                     Text="{Binding Email}"/>
+        </Grid>
+
+        <Grid Width="200" HorizontalAlignment="Right">
+            <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Password"
+                           Visibility="{Binding ElementName=passwordTextBox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+
+            <TextBox Name="passwordTextBox" Style="{StaticResource searchTextbox}"
+                     Text="{Binding Password}"/>
+
+            <Icon:PackIconMaterial Kind="Eye" Width="15" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#B0B9C6" HorizontalAlignment="Right" />
+        </Grid>
+
+        <Border Background="#ffffff" HorizontalAlignment="Center" Padding="10, 5"
+                CornerRadius="20" Width="200" Margin="0 5 0 10"
+                BorderThickness="1" BorderBrush="#E0E6ED">
+            <ComboBox Name="genderComboxBox" Background="Transparent"
+                              BorderThickness="0" VerticalAlignment="Center"
+                              ItemsSource="{Binding Genders}"
+                              SelectedItem="{Binding SelectedGender}">
+            </ComboBox>
+        </Border>
+
+        <Border Background="#ffffff" HorizontalAlignment="Center" Padding="10, 5"
+                CornerRadius="20" Width="200" Margin="0 5 0 10"
+                BorderThickness="1" BorderBrush="#E0E6ED">
+            <ComboBox Name="genderInterestComboxBox" Background="Transparent"
+                              BorderThickness="0" VerticalAlignment="Center"
+                              ItemsSource="{Binding Genders}"
+                              SelectedItem="{Binding SelectedGenderInterest}">
+            </ComboBox>
+        </Border>
+
+        <DatePicker Width="180" SelectedDate="{Binding Birthday}" Margin="0 5 0 10"
+                    BorderThickness="1" BorderBrush="#E0E6ED"/>
+
+        <Button Style="{StaticResource AddButton}"
+                Margin="0, 15"
+                Command="{Binding AddUserCommand}">
+            <TextBlock Text="Create"/>
+        </Button>
+    </StackPanel>
+</Window>
