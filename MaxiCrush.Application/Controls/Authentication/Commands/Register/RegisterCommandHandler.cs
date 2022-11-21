@@ -43,7 +43,7 @@ public class RegisterCommandHandler
         if (user != null)
             return Result.Fail(AppErrors.Authentication.DuplicateEmail);
 
-        var confirmationToken = _confirmationTokenRepos.GetByEmailAsync(command.Email);
+        var confirmationToken = await _confirmationTokenRepos.GetByEmailAsync(command.Email);
 
         if (confirmationToken == null)
             return Result.Fail(AppErrors.Authentication.NoConfirmationToken);
