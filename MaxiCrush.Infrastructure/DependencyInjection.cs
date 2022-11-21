@@ -1,9 +1,11 @@
 ﻿using MaxiCrush.Application.Common.Interfaces.Authentication;
 using MaxiCrush.Application.Common.Interfaces.Persistance;
+using MaxiCrush.Application.Common.Interfaces.Services;
 using MaxiCrush.Domain.Entities;
 using MaxiCrush.Infrastructure.Authentication;
 using MaxiCrush.Infrastructure.Persistance;
 using MaxiCrush.Infrastructure.Persistance.Repositories;
+using MaxiCrush.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,13 +24,14 @@ public static class DependencyInjection
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-        services.AddSingleton<IPasswordHasher, PasswordHasher>();
-        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+        services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<IPasswordHasher, PasswordHasher>();
+        services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRoleRepository, RoleRepository>();
         services.AddScoped<IPermissionRepository, PermissionRepository>();
-        services.AddScoped<IConfirmationTokenRepository, ConfirmationTokenRepository>();
+        services.AddScoped<IConfirmationCodeRepository, ConfirmationCodeRepository>();
 
         return services;
     }

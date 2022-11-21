@@ -11,10 +11,11 @@ public static class AppErrors
     {
         public static readonly ResultError InvalidCredentials = new("Authentication.InvalidCredentials", "Invalid credentials provided", HttpStatusCode.Unauthorized);
         public static readonly ResultError DuplicateEmail = new("Authentication.DuplicateEmail", "Email already exists.", HttpStatusCode.Conflict);
-        public static readonly ResultError NoConfirmationToken = new("Authentication.NoConfirmationToken", "No confirmation token linked to the provided informations.", HttpStatusCode.BadRequest);
-        public static readonly ResultError ConfirmationTokenExpired = new("Authentication.ConfirmationTokenExpired", "This confirmation token has expired.", HttpStatusCode.BadRequest);
-        public static readonly ResultError WrongConfirmationCode = new("Authentication.WrongConfirmationCode", "Wrong confirmation code provided", HttpStatusCode.BadRequest);
         public static readonly ResultError Unauthorized = new("Authentication.Unauthorized", "You're not authenticated correctly", HttpStatusCode.Unauthorized);
+
+        public static readonly ResultError NoConfirmationToken = new("Authentication.Confirmation.NotFound", "No confirmation token linked to the provided informations.", HttpStatusCode.BadRequest);
+        public static readonly ResultError WrongConfirmationCode = new("Authentication.Confirmation.WrongCode", "Wrong confirmation code provided", HttpStatusCode.BadRequest);
+        public static readonly ResultError Confirmation_UserAlreadyExist = new("Authentication.Confirmation.UserAlreadyExist", "Cannot create a confirmation code because this user is already registered.", HttpStatusCode.Unauthorized);
     }
 
     public static class Users

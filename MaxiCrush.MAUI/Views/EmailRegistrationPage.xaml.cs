@@ -1,5 +1,6 @@
 using MaxiCrush.MAUI.Services;
 using MaxiCrush.Rest;
+using Microsoft.Maui.ApplicationModel.Communication;
 using Newtonsoft.Json.Linq;
 
 namespace MaxiCrush.MAUI.Views;
@@ -61,20 +62,28 @@ public partial class EmailRegistrationPage : ContentPage
         if (string.IsNullOrEmpty(emailEntryInput.Text))
             return;
 
-        confirmButton.IsInProgress = true;
 
-        var sended = await _restClient.SendConfirmationCodeAsync(emailEntryInput.Text);
-
-        confirmButton.IsInProgress = false;
-
-        if (sended)
+        if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
         {
-            _userBuilder.Email = emailEntryInput.Text;
-            await Shell.Current.GoToAsync(nameof(EmailConfirmationPage));
+            await DisplayAlert("Oups", "Tu n'as pas de connexion internet !", "OK");
+            return;
         }
-        else
+
+
+        var error = await Utils.HandleRequest(async () =>
         {
-            await DisplayAlert("Oups !", $"Il semble que tu aies déjà un compte. Appuie sur le bouton récupérer mon compte dans le menu principal afin de pouvoir te connecter.", "OK");
+            confirmButton.IsInProgress = true;
+
+            await _restClient.GetConfirmationCodeAsync(emailEntryInput.Text);
+            _userBuilder.Email = emailEntryInput.Text;
+
+            await Shell.Current.GoToAsync(nameof(EmailConfirmationPage));
+            confirmButton.IsInProgress = false;
+        });
+
+        if (error != null)
+        {
+            await DisplayAlert("Oups", error.Value.Message, "OK");
         }
     }
 }

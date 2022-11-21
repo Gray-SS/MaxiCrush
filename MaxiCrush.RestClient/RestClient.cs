@@ -1,7 +1,10 @@
-﻿using MaxiCrush.Contracts;
+﻿using FluentValidation.Results;
+using MaxiCrush.Contracts;
 using MaxiCrush.Contracts.Authentication;
+using MaxiCrush.Contracts.Authentication.Confirmation;
 using MaxiCrush.Contracts.Authentication.Login;
 using MaxiCrush.Contracts.Authentication.Register;
+using MaxiCrush.Contracts.Authentication.VerifyConfirmation;
 using MaxiCrush.Contracts.Dto;
 using MaxiCrush.Contracts.Permissions;
 using MaxiCrush.Contracts.Roles;
@@ -23,9 +26,21 @@ namespace MaxiCrush.Rest
         {
         }
 
-        public Task SendConfirmationCodeAsync(string email)
+        public async Task GetConfirmationCodeAsync(string email)
         {
-            return Task.FromResult(true);
+            var requestUri = ApiRoutes.Authentication.Confirmation;
+
+            await DoAsync(RestHttpRequestMethod.Post, requestUri, new ConfirmationRequest(email));
+        }
+
+        public async Task<bool> VerifyConfirmationCodeAsync(string email, string code)
+        {
+            var requestUri = ApiRoutes.Authentication.VerifyConfirmationF(email, code);
+
+            var response = await DoAsync(RestHttpRequestMethod.Get, requestUri);
+
+            var data = await response.GetDataAsync<VerifyConfirmationResponse>();
+            return data.IsValid;
         }
 
         public async Task<UserDto> GetCurrentUserAsync()

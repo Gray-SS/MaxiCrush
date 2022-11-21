@@ -21,8 +21,4 @@
     <ProjectReference Include="..\MaxiCrush.Domain\MaxiCrush.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controls\Users\Queries\NewFolder\" />
-  </ItemGroup>
-
 </Project>

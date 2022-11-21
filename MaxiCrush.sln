@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{C6AEA7B7-B524-47FF-89EC-9635BF263BE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontent", "frontent", "{FBE6D7F6-FC5C-475B-A43A-088FC049C3B3}"
+	ProjectSection(SolutionItems) = preProject
+		MaxiCrush.AdminViewControl\ViewModels\MainViewModel.cs = MaxiCrush.AdminViewControl\ViewModels\MainViewModel.cs
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxiCrush.MAUI", "MaxiCrush.MAUI\MaxiCrush.MAUI.csproj", "{10F71F7C-C655-4A71-A109-6570474954CB}"
 EndProject
@@ -27,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{F68EBE7A-9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxiCrush.AdminViewControl", "MaxiCrush.AdminViewControl\MaxiCrush.AdminViewControl.csproj", "{A6F63B9F-EA6E-4732-A46C-85DD7A50CC1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxiCrush.RestClient", "MaxiCrush.RestClient\MaxiCrush.RestClient.csproj", "{D9AD9C80-2F37-4035-A486-A45844C49326}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxiCrush.RestClient", "MaxiCrush.RestClient\MaxiCrush.RestClient.csproj", "{D9AD9C80-2F37-4035-A486-A45844C49326}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

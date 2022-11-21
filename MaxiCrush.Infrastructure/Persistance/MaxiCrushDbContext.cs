@@ -8,7 +8,7 @@ public class MaxiCrushDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<Permission> Permissions { get; set; }
-    public DbSet<ConfirmationToken> ConfirmationTokens { get; set; }
+    public DbSet<ConfirmationCode> ConfirmationCodes { get; set; }
 
     public MaxiCrushDbContext() : base() { }
     public MaxiCrushDbContext(DbContextOptions<MaxiCrushDbContext> options) : base(options) { }

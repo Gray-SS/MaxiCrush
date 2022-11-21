@@ -16,7 +16,7 @@ public class RegisterCommandHandler
     private readonly IUnitOfWork _unitOfWork;
     private readonly IUserRepository _userRepos;
     private readonly IRoleRepository _roleRepos;
-    private readonly IConfirmationTokenRepository _confirmationTokenRepos;
+    private readonly IConfirmationCodeRepository _confirmationTokenRepos;
     private readonly IPasswordHasher _passwordHasher;
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
@@ -25,7 +25,7 @@ public class RegisterCommandHandler
                                   IUserRepository userRepos,
                                   IRoleRepository roleRepos,
                                   IUnitOfWork unitOfWork,
-                                  IConfirmationTokenRepository confirmationTokenRepos)
+                                  IConfirmationCodeRepository confirmationTokenRepos)
     {
         _userRepos = userRepos;
         _roleRepos = roleRepos;
@@ -48,10 +48,7 @@ public class RegisterCommandHandler
         if (confirmationToken == null)
             return Result.Fail(AppErrors.Authentication.NoConfirmationToken);
 
-        if (confirmationToken.ExpirationDate >= DateTime.UtcNow)
-            return Result.Fail(AppErrors.Authentication.ConfirmationTokenExpired);
-
-        if (confirmationToken.Code != command.Code)
+        if (confirmationToken.Value != command.Code)
             return Result.Fail(AppErrors.Authentication.WrongConfirmationCode);
 
 

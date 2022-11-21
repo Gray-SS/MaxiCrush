@@ -2,11 +2,10 @@
 
 namespace MaxiCrush.Domain.Entities;
 
-public class ConfirmationToken
+public class ConfirmationCode
 {
     [Key]
     public Guid Id { get; set; }
     public string Email { get; set; }
-    public string Code { get; set; }
-    public DateTime ExpirationDate { get; set; }
+    public string Value { get; set; }
 }

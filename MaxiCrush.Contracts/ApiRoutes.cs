@@ -12,6 +12,11 @@ public static class ApiRoutes
 
         public const string Register = Endpoint + "/register";
         public const string Login = Endpoint + "/login";
+        public const string Confirmation = Endpoint + "/confirmation";
+        public const string VerifyConfirmation = Confirmation + "/verify";
+
+        public static string VerifyConfirmationF(string email, string code)
+            => VerifyConfirmation + $"?email={email}&code={code}";
     }
 
     public static class Users
@@ -19,7 +24,7 @@ public static class ApiRoutes
         public const string Endpoint = BaseUrl + "/users";
 
         public const string AuthorizedUser = Endpoint + "/me";
-        public const string SetRole = Endpoint + "/set_role" + TargetId;
+        public const string SetRole = Endpoint + TargetId + "/role";
 
         public const string DeleteUser = Endpoint + TargetId;
         public const string UpdateUser = Endpoint + TargetId;

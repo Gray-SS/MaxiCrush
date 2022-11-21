@@ -9,6 +9,7 @@ using MaxiCrush.Application.Controls.Roles.Queries.GetRole;
 using MaxiCrush.Contracts;
 using MaxiCrush.Contracts.Dto;
 using MaxiCrush.Contracts.Roles;
+using MaxiCrush.Infrastructure.Mailing;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,7 @@ public class RolesController : CQRSController
     [Authorize(Policy = Permissions.Roles.Commands)]
     public async Task<IActionResult> CreateRoleAsync([FromBody] CreateRoleRequest request)
     {
+
         var getIdResult = HttpContext.User.GetUserId();
 
         if (getIdResult.IsFailed)

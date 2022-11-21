@@ -33,26 +33,31 @@ public partial class EmailConfirmationPage : ContentPage
             return;
         }
 
-        confirmButton.IsInProgress = true;
-
-        try
+        if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
         {
-            var verified = await _restClient.ConfirmCodeAsync(email, code);
+            await DisplayAlert("Oups", "Tu n'as pas de connexion internet !", "OK");
+            return;
+        }
 
-            if (!verified)
+
+        var error = await Utils.HandleRequest(async () =>
+        {
+            confirmButton.IsInProgress = true;
+
+            var verified = await _restClient.VerifyConfirmationCodeAsync(email, code);
+
+            if (verified)
             {
-                await DisplayAlert("Oups", "Tu as peut-être fait une faute de frappe, réessaie !", "OK");
-                confirmButton.IsInProgress = false;
-                return;
+                //_userBuilder.Code = code;
+                await Shell.Current.GoToAsync(nameof(PersonnalDataRegistrationPage));
             }
 
-            await Shell.Current.GoToAsync(nameof(PersonnalDataRegistrationPage));
-        }
-        catch(RestHttpRequestException ex)
+            confirmButton.IsInProgress = false;
+        });
+
+        if (error != null)
         {
-            var response = ex.Response;
-            await DisplayAlert("Oups", await response.GetErrorMessageAsync(), "OK");
+            await DisplayAlert("Oups", error.Value.Message, "OK");
         }
-        finally { confirmButton.IsInProgress = false; }
     }
 }

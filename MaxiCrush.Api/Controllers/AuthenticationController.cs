@@ -12,6 +12,10 @@ using Microsoft.AspNetCore.Mvc;
 using MaxiCrush.Api.Common;
 using MaxiCrush.Contracts.Authentication.Login;
 using MaxiCrush.Contracts.Authentication.Register;
+using MaxiCrush.Contracts.Authentication.Confirmation;
+using MaxiCrush.Application.Controls.Authentication.Commands.Confirmation;
+using MaxiCrush.Application.Controls.Authentication.Queries.IsConfirmationValid;
+using MaxiCrush.Contracts.Authentication.VerifyConfirmation;
 
 namespace MaxiCrush.Api.Controllers;
 
@@ -59,6 +63,34 @@ public class AuthenticationController : CQRSController
         var authResult = result.Value;
 
         var response = Mapper.Map<LoginResponse>(authResult);
+        return this.Ok(response);
+    }
+
+    [HttpPost(ApiRoutes.Authentication.Confirmation)]
+    public async Task<IActionResult> CreateConfirmationCodeAsync(ConfirmationRequest request)
+    {
+        var command = new ConfirmationCommand(request.Email);
+        var result = await Send(command);
+
+        if (result.IsFailed)
+            return this.HandleProblem(result.Errors);
+
+        var response = new ConfirmationResponse(request.Email, DateTime.UtcNow);
+        return this.Ok(response);
+    }
+
+    [HttpGet(ApiRoutes.Authentication.VerifyConfirmation)]
+    public async Task<IActionResult> VerifyConfirmationAsync(string email, string code)
+    {
+        var command = new VerifyConfirmationQuery(email,
+                                                   code);
+
+        var result = await Send(command);
+
+        if (result.IsFailed)
+            return this.HandleProblem(result.Errors);
+
+        var response = new VerifyConfirmationResponse(result.Value);
         return this.Ok(response);
     }
 }
