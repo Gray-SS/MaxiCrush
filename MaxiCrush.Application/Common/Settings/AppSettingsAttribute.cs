@@ -5,7 +5,8 @@ public class AppSettingsAttribute : Attribute
 {
     public string Name { get; private set; }
 
-    public AppSettingsAttribute(string name)    {
+    public AppSettingsAttribute(string name)
+    {
         Name = name;
     }
 }

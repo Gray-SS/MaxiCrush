@@ -1,13 +1,10 @@
-﻿using Android.Views;
-using MaxiCrush.MAUI.Views;
-using CommunityToolkit.Mvvm;
-using Syncfusion.Maui.Core.Hosting;
-using CommunityToolkit.Maui;
-using MaxiCrush.MAUI.Services;
-using Java.Sql;
+﻿using MaxiCrush.MobileApp.Services;
+using MaxiCrush.MobileApp.Views;
 using MaxiCrush.Rest;
+using CommunityToolkit.Maui;
+using Syncfusion.Maui.Core.Hosting;
 
-namespace MaxiCrush.MAUI
+namespace MaxiCrush.MobileApp
 {
     public static class MauiProgram
     {
@@ -30,7 +27,8 @@ namespace MaxiCrush.MAUI
                 });
 
             builder.Services.AddSingleton(Connectivity.Current);
-            builder.Services.AddSingleton(new RestClient(RestClient.HostType.Localhost));
+
+            builder.Services.AddSingleton(new RestClient(RestClient.HostType.Azure));
 
             builder.Services.AddSingleton<UserBuilder>();
             builder.Services.AddSingleton<AccountRecuperationPage>();

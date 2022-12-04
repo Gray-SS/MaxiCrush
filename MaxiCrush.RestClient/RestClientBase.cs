@@ -17,9 +17,9 @@ namespace MaxiCrush.Rest
 
     public abstract class RestClientBase
     {
-        protected HttpClient HttpClient => _httpClient; 
+        protected HttpClient HttpClient => _httpClient;
         private HttpClient _httpClient;
-        
+
         public delegate Task<HttpResponseMessage> HttpRequestMethodDelegate(HttpClient httpClient, Uri? requestUri, HttpContent? content, CancellationToken cancellationToken);
 
         private readonly Dictionary<RestHttpRequestMethod, HttpRequestMethodDelegate> _requestDelegatesDictionary = new()
@@ -37,23 +37,24 @@ namespace MaxiCrush.Rest
             Azure
         }
 
-        public RestClientBase(HostType hostType)
+        public RestClientBase(Uri baseAddress)
         {
-            Uri baseAddress = hostType switch
-            {
-                HostType.Localhost => new Uri("https://localhost:7066"),
-                HostType.Azure => new Uri("https://maxicrushwapi20221019205107.azurewebsites.net"),
-                _ => throw new NotImplementedException()
-            };
-
             _httpClient = new HttpClient
             {
-                BaseAddress = baseAddress
+                BaseAddress = baseAddress,
             };
 
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
+
+        public RestClientBase(HostType hostType) : this(hostType switch
+        {
+            HostType.Localhost => new Uri("https://localhost:7066"),
+            HostType.Azure => new Uri("https://maxicrushwapi20221019205107.azurewebsites.net"),
+            _ => throw new NotImplementedException()
+        })
+        { }
 
         protected async Task<RestResponseMessage> DoAsync<TPayload>(RestHttpRequestMethod method, string? requestUri, TPayload? payload, CancellationToken? cancellationToken = null)
             => await DoAsync(method, new Uri(requestUri, UriKind.Relative), payload, cancellationToken);

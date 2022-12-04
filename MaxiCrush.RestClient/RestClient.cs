@@ -22,9 +22,8 @@ namespace MaxiCrush.Rest
 
         public event Action? OnLoggedIn;
 
-        public RestClient(HostType hostType) : base(hostType)
-        {
-        }
+        public RestClient(HostType hostType) : base(hostType) { } 
+        public RestClient(Uri baseAdress) : base(baseAdress) { }
 
         public async Task GetConfirmationCodeAsync(string email)
         {

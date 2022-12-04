@@ -8,9 +8,6 @@
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False">
 
-    <ShellContent
-        Title="Hello, World!"
-        ContentTemplate="{DataTemplate views:WelcomePage}"
-        Route="WelcomePage" />
+    <ShellContent ContentTemplate="{DataTemplate views:WelcomePage}" Route="WelcomePage" />
 
 </Shell>

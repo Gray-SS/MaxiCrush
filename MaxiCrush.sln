@@ -32,6 +32,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxiCrush.AdminViewControl"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxiCrush.RestClient", "MaxiCrush.RestClient\MaxiCrush.RestClient.csproj", "{D9AD9C80-2F37-4035-A486-A45844C49326}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxiCrush.MobileApp", "MaxiCrush.MobileApp\MaxiCrush.MobileApp.csproj", "{09849DD8-A8E7-48FE-812F-B6010BA33CE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,12 @@ Global
 		{D9AD9C80-2F37-4035-A486-A45844C49326}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9AD9C80-2F37-4035-A486-A45844C49326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9AD9C80-2F37-4035-A486-A45844C49326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09849DD8-A8E7-48FE-812F-B6010BA33CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09849DD8-A8E7-48FE-812F-B6010BA33CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09849DD8-A8E7-48FE-812F-B6010BA33CE7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{09849DD8-A8E7-48FE-812F-B6010BA33CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09849DD8-A8E7-48FE-812F-B6010BA33CE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09849DD8-A8E7-48FE-812F-B6010BA33CE7}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +94,7 @@ Global
 		{F68EBE7A-91CE-4BEB-9F07-8693D7935533} = {C6AEA7B7-B524-47FF-89EC-9635BF263BE7}
 		{A6F63B9F-EA6E-4732-A46C-85DD7A50CC1F} = {FBE6D7F6-FC5C-475B-A43A-088FC049C3B3}
 		{D9AD9C80-2F37-4035-A486-A45844C49326} = {FBE6D7F6-FC5C-475B-A43A-088FC049C3B3}
+		{09849DD8-A8E7-48FE-812F-B6010BA33CE7} = {FBE6D7F6-FC5C-475B-A43A-088FC049C3B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6463F5D-8D43-4023-B8C5-2ADF00118DDC}
