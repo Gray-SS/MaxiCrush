@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:RegistrationPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers"
+                         xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+                           xmlns:views="clr-namespace:MaxiCrush.MAUI.MVVM.Views"
+                         xmlns:viewModels="clr-namespace:MaxiCrush.MAUI.MVVM.ViewModels"
+                         xmlns:controls="clr-namespace:MaxiCrush.MAUI.Controls"
+                         x:Class="MaxiCrush.MAUI.MVVM.Views.WhatIsYourCodeView"
+                         x:DataType="viewModels:WhatIsYourCodeViewModel"
+                          Command="{Binding GoNextCommand}"
+                         Title="WhatIsYourCodeView">
+
+    <ContentPage.Resources>
+        <Style TargetType="Button"
+               x:Key="keypadButton">
+            <Setter Property="FontAutoScalingEnabled" Value="True"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="TextColor" Value="#676464"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="FontFamily" Value="{Static helpers:FontHelper.LatoBold}"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Command" Value="{Binding WriteDigitCommand}"/>
+            <Setter Property="CommandParameter" Value="{Binding Text, Source={RelativeSource Self}}"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+
+        <Label Text="Quel est votre code ?"
+               Style="{StaticResource BaseHeaderLabel}"/>
+
+        <Label Text="{Binding Email, StringFormat='Veuillez écrire ci-dessous le code reçu à l’email suivante: {0}'}"
+               Margin="0, 10, 0, 0"
+               Style="{StaticResource CaptionLabel}"/>
+
+        <HorizontalStackLayout HorizontalOptions="Center"
+                               Margin="0, 40, 0, 0"
+                               Spacing="15">
+            <Frame BorderColor="{Binding DigitOneStroke}"
+                   BackgroundColor="#F1F1F1">
+                <Label Text="{Binding DigitOne}"
+                       TextColor="{Binding DigitOneStroke, Mode=TwoWay}"
+                       Style="{StaticResource BaseHeaderLabel}"/>
+            </Frame>
+            <Frame BorderColor="{Binding DigitTwoStroke}"
+                   BackgroundColor="#F1F1F1">
+                <Label Text="{Binding DigitTwo}"
+                       TextColor="{Binding DigitTwoStroke}"
+                       Style="{StaticResource BaseHeaderLabel}"/>
+            </Frame>
+            <Frame BorderColor="{Binding DigitThreeStroke}"
+                   BackgroundColor="#F1F1F1">
+                <Label Text="{Binding DigitThree}"
+                       TextColor="{Binding DigitThreeStroke}"
+                       Style="{StaticResource BaseHeaderLabel}"/>
+            </Frame>
+            <Frame BorderColor="{Binding DigitFourStroke}"
+                   BackgroundColor="#F1F1F1">
+                <Label Text="{Binding DigitFour}"
+                       TextColor="{Binding DigitFourStroke}"
+                       Style="{StaticResource BaseHeaderLabel}"/>
+            </Frame>
+        </HorizontalStackLayout>
+
+        <Frame VerticalOptions="Fill"
+               HeightRequest="275"
+               Margin="0, 40, 0, 0"
+               CornerRadius="20">
+            <Grid RowDefinitions="*,*,*,1.4*"
+                  ColumnDefinitions="*,*,*">
+                <!-- First Row -->
+                <Button Text="1" Style="{StaticResource keypadButton}" Grid.Row="0" Grid.Column="0"/>
+                <Button Text="2" Style="{StaticResource keypadButton}" Grid.Row="0" Grid.Column="1"/>
+                <Button Text="3" Style="{StaticResource keypadButton}" Grid.Row="0" Grid.Column="2"/>
+
+                <!-- Second Row -->
+                <Button Text="4" Style="{StaticResource keypadButton}" Grid.Row="1" Grid.Column="0"/>
+                <Button Text="5" Style="{StaticResource keypadButton}" Grid.Row="1" Grid.Column="1"/>
+                <Button Text="6" Style="{StaticResource keypadButton}" Grid.Row="1" Grid.Column="2"/>
+
+                <!-- Third Row -->
+                <Button Text="7" Style="{StaticResource keypadButton}" Grid.Row="2" Grid.Column="0"/>
+                <Button Text="8" Style="{StaticResource keypadButton}" Grid.Row="2" Grid.Column="1"/>
+                <Button Text="9" Style="{StaticResource keypadButton}" Grid.Row="2" Grid.Column="2"/>
+
+                <!-- Fourth Row -->
+                <Button Text="#" Style="{StaticResource keypadButton}" Grid.Row="3" Grid.Column="0"/>
+                <Button Text="0" Style="{StaticResource keypadButton}" Grid.Row="3" Grid.Column="1"/>
+                <Button FontFamily="{Static helpers:FontHelper.FASolid}" Text="{Static helpers:IconFont.ArrowLeft}" Style="{StaticResource keypadButton}" Grid.Row="3" Grid.Column="2"/>
+            </Grid>
+        </Frame>
+
+    </VerticalStackLayout>
+    
+</controls:RegistrationPage>

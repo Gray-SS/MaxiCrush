@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MaxiCrush.MAUI.Controls"
+             x:Class="MaxiCrush.MAUI.Controls.CustomRadioButton"
+             x:Name="contentView">
+    <Grid>
+        <!--
+        <Border StrokeThickness="2"
+                StrokeShape="RoundRectangle 15"
+                BackgroundColor="Transparent"
+                Padding="20, 10">
+            
+            <Label Text="{Binding Text, Source={x:Reference contentView}}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                <Label.Style>
+                    <Style TargetType="Label">
+                        <Setter Property="TextColor" Value="Black"/>
+                        <Style.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding IsChecked, Source={x:Reference radioButton}}" Value="True">
+                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
+            </Label>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Stroke" Value="Black"/>
+                    <Style.Triggers>
+                        <DataTrigger TargetType="Border" Binding="{Binding IsChecked, Source={x:Reference radioButton}}" Value="True">
+                            <Setter Property="Stroke" Value="{StaticResource Primary}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
+        -->
+        <Button BorderWidth="{Binding BorderWidth, Source={x:Reference contentView}}"
+                CornerRadius="{Binding CornerRadius, Source={x:Reference contentView}}"
+                Text="{Binding Text, Source={x:Reference contentView}}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="{Binding BackgroundColor, Source={x:Reference contentView}}"/>
+                    <Setter Property="BorderColor" Value="{Binding BorderColor, Source={x:Reference contentView}}"/> 
+                    <Setter Property="TextColor" Value="{Binding TextColor, Source={x:Reference contentView}}"/>
+                    <Style.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsChecked, Source={x:Reference radioButton}}"
+                                     Value="True">
+                            <Setter Property="BorderColor" Value="{Binding OnSelectedBorderColor, Source={x:Reference contentView}}"/>
+                            <Setter Property="TextColor" Value="{Binding OnSelectedTextColor, Source={x:Reference contentView}}"/>
+                            <Setter Property="BackgroundColor" Value="{Binding OnSelectedBackgroundColor, Source={x:Reference contentView}}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <RadioButton Opacity="0" x:Name="radioButton"
+                     IsChecked="{Binding IsChecked, Source={x:Reference contentView}}"
+                     GroupName="{Binding GroupName, Source={x:Reference contentView}}"/>
+    </Grid>
+
+</ContentView>

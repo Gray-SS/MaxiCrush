@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers"
+             xmlns:viewModels="clr-namespace:MaxiCrush.MAUI.MVVM.ViewModels"             
+             x:Class="MaxiCrush.MAUI.MVVM.Views.WelcomeView"
+             x:DataType="viewModels:WelcomeViewModel"
+             BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+             Title="WelcomeView">
+
+    <Grid>
+        <Image Aspect="AspectFill"
+               Source="welcome_page_frame.svg"
+               VerticalOptions="End"/>
+
+        <Grid RowDefinitions="*, *">
+            
+            <Label Text="MAXICRUSH"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="0, 50, 0, 0"
+                   Style="{StaticResource WelcomeHeaderLabel}"
+                   FontSize="32"/>
+
+            <VerticalStackLayout Grid.Row="1"
+                                 HorizontalOptions="Center"
+                                 Margin="50, 40"
+                                 Spacing="20">
+                <Label Text="En cliquant sur “S’inscrire”, vous acceptez nos conditions. Plus d’information sur comment vos données sont gérée dans notre politique de confidentialité."
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       Style="{StaticResource CaptionLabel}"/>
+
+                <Button Text="S'inscrire avec son adresse UCL"
+                        Command="{Binding GotoWhatIsYourEmailViewCommand}"
+                        Style="{StaticResource SecondaryButton}"/>
+
+                <Label Text="Récupérer son compte"
+                       TextColor="White"
+                       FontSize="14"
+                       HorizontalTextAlignment="Center"
+                       Style="{StaticResource CaptionLabel}">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GotoRecoverAccountViewCommand}"/>
+                    </Label.GestureRecognizers>
+
+                </Label>
+
+            </VerticalStackLayout>
+            
+        </Grid>
+        
+    </Grid>
+</ContentPage>

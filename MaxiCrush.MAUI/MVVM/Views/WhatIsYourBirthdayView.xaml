@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:RegistrationPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vms="clr-namespace:MaxiCrush.MAUI.MVVM.ViewModels"
+             xmlns:converters="clr-namespace:MaxiCrush.MAUI.Converters"
+             xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers"
+             xmlns:controls="clr-namespace:MaxiCrush.MAUI.Controls"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:DataType="vms:WhatIsYourBirthdayViewModel"
+                           Command="{Binding GoNextCommand}"
+             x:Class="MaxiCrush.MAUI.MVVM.Views.WhatIsYourBirthdayView"
+             Title="WhatIsYourBirthdayView">
+
+    <ContentPage.Resources>
+        <converters:DatetimeToDateonlyConverter x:Key="datetimeToDateonly"/>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+
+        <Label Text="Quand est ton anniversaire ?"
+               Margin="0, 0, 50, 0"
+               Style="{StaticResource BaseHeaderLabel}"/>
+
+        <Grid Margin="0, 10, 0, 0">
+            
+            <sf:SfTextInputLayout Style="{StaticResource PrimaryInputLayout}"
+                                  Padding="0, -10">
+                <Label Text="{Binding Source={x:Reference datePicker}, Path=Date, Converter={StaticResource datetimeToDateonly}}"
+                            FontSize="18"
+                            TextColor="Black"/>
+            </sf:SfTextInputLayout>
+            
+            <DatePicker Date="{Binding CurrentDatetime, Mode=TwoWay}"
+                        MaximumDate="{Binding MaximumDatetime, Mode=OneTime}"
+                        FontSize="16"
+                        Opacity="0"
+                        x:Name="datePicker"/>
+        </Grid>
+
+        <Label Text="Ton âge sera visible par tous les autres utilisateur, on sait que c'est tentant de mentir mais t'inquiète tu fais plus jeune"
+               Margin="0, 10, 0, 0"
+               Style="{StaticResource CaptionLabel}"/>
+
+    </VerticalStackLayout>
+
+</controls:RegistrationPage>

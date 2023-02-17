@@ -4,10 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MaxiCrush.MAUI"
-    xmlns:views="clr-namespace:MaxiCrush.MAUI.Views"
+    xmlns:views="clr-namespace:MaxiCrush.MAUI.MVVM.Views"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False">
 
-    <ShellContent ContentTemplate="{DataTemplate views:WelcomePage}" Route="WelcomePage" />
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent"/>
+    </Shell.Behaviors>
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:WelcomeView}"
+        Route="MainPage" />
 
 </Shell>

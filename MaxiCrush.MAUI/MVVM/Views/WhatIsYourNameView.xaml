@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:RegistrationPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vms="clr-namespace:MaxiCrush.MAUI.MVVM.ViewModels"
+             xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers"
+             xmlns:controls="clr-namespace:MaxiCrush.MAUI.Controls"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:DataType="vms:WhatIsYourNameViewModel"
+             x:Class="MaxiCrush.MAUI.MVVM.Views.WhatIsYourNameView"
+             Command="{Binding GoNextCommand}"
+             Title="WhatIsYourNameView">
+
+    <VerticalStackLayout>
+        <Label Text="Quel est ton prénom ?"
+               Margin="0, 0, 50, 0"
+               Style="{StaticResource BaseHeaderLabel}"/>
+
+        <sf:SfTextInputLayout Style="{StaticResource PrimaryInputLayout}"
+                                  Margin="0, -10, 0, 0">
+            <Entry Placeholder="Prénom"
+                       Text="{Binding Firstname, Mode=OneWayToSource}"
+                       Style="{StaticResource PrimaryEntry}"
+                       FontSize="18"
+                       x:Name="entry"/>
+        </sf:SfTextInputLayout>
+
+        <Label Text="Ce prénom sera celui que les autres utilisateurs verront. Vous ne pourrez plus le modifier par la suite, veillez donc à choisir consciencieusement."
+               Margin="0, 10, 0, 0"
+               Style="{StaticResource CaptionLabel}"/>
+
+    </VerticalStackLayout>
+
+</controls:RegistrationPage>

@@ -1,10 +1,10 @@
-﻿namespace MaxiCrush.MAUI.Helpers
+﻿namespace MaxiCrush.MAUI.Helpers;
+
+public static class FontHelper
 {
-    static class FontHelper
-    {
-        public const string NexaBold = "NexaBold";
-        public const string NexaLight = "NexaLight";
-        public const string NexaTextBold = "NexaTextBold";
-        public const string NexaTextLight = "NexaTextLight";
-    }
+    public static readonly string LatoRegular = "Lato-Regular.ttf";
+    public static readonly string LatoLight = "Lato-Light.ttf";
+    public static readonly string LatoBold = "Lato-Bold.ttf";
+    public static readonly string FASolid = "fa-solid-900.ttf";
+    public static readonly string FABrand = "fa-brand-400.ttf";
 }

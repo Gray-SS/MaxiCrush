@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers">  
+
+    <!-- Headers -->
+    <Style x:Key="BaseHeaderLabel"
+           TargetType="Label"
+           ApplyToDerivedTypes="True">
+
+        <Setter Property="FontAutoScalingEnabled" Value="True"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="TextColor" Value="{StaticResource HeaderColor}"/>
+        <Setter Property="FontFamily" Value="{Static helpers:FontHelper.LatoBold}"/>
+        
+    </Style>
+
+    <Style x:Key="WelcomeHeaderLabel"
+           TargetType="Label"
+           ApplyToDerivedTypes="True"
+           BasedOn="{StaticResource BaseHeaderLabel}">
+
+        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+        <Setter Property="FontFamily" Value="{Static helpers:FontHelper.LatoRegular}"/>
+
+    </Style>
+    
+    <!-- Captions -->
+    <Style x:Key="CaptionLabel"
+           TargetType="Label"
+           ApplyToDerivedTypes="True">
+
+        <Setter Property="TextColor" Value="#5E5E5E"/>
+        <Setter Property="FontAutoScalingEnabled" Value="True"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="{Static helpers:FontHelper.LatoRegular}"/>
+
+    </Style>
+
+</ResourceDictionary>

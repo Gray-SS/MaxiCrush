@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:controls="clr-namespace:MaxiCrush.MAUI.Controls"
+                    xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+
+    <Style x:Key="BackButton"
+           TargetType="Button">
+        <Setter Property="FontFamily" Value="{Static helpers:FontHelper.FABrand}"/>
+        <Setter Property="TextColor" Value="#5E5E5E"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="WidthRequest" Value="40"/>
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="Margin" Value="{StaticResource RegistrationBackButtonMargin}"/>
+    </Style>
+    
+    <Style x:Key="PrimaryCustomRadioButton"
+           TargetType="controls:CustomRadioButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="BorderWidth" Value="2"/>
+        <Setter Property="BorderColor" Value="#909090"/>
+        <Setter Property="TextColor" Value="#909090"/>
+        <Setter Property="OnSelectedBackgroundColor" Value="Transparent"/>
+        <Setter Property="OnSelectedBorderColor" Value="{StaticResource Primary}"/>
+        <Setter Property="OnSelectedTextColor" Value="{StaticResource Primary}"/>
+        <Setter Property="CornerRadius" Value="20"/>
+    </Style>
+    
+    <Style x:Key="PrimaryButton"
+           TargetType="Button"
+           ApplyToDerivedTypes="True">
+
+        <Setter Property="Padding" Value="16, 2"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontAutoScalingEnabled" Value="True"/>
+        <Setter Property="FontFamily" Value="{Static helpers:FontHelper.LatoRegular}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+        <Setter Property="TextColor" Value="White"/>
+
+    </Style>
+
+    <Style x:Key="SecondaryButton"
+           TargetType="Button"
+           BasedOn="{StaticResource PrimaryButton}"
+           ApplyToDerivedTypes="True">
+
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+
+    </Style>
+
+</ResourceDictionary>

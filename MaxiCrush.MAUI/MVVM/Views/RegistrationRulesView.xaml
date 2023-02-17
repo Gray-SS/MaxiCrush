@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vms="clr-namespace:MaxiCrush.MAUI.MVVM.ViewModels"
+             xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers"
+             x:Class="MaxiCrush.MAUI.MVVM.Views.RegistrationRulesView"
+             x:DataType="vms:RegistrationRulesViewModel"
+             BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+             Title="RegistrationRulesView">
+    
+    <VerticalStackLayout Margin="{StaticResource RegistrationViewsMargin}">
+        <Label FontFamily="{Static helpers:FontHelper.FABrand}"
+               FontSize="25"
+               Text="{Static helpers:IconFont.ArrowLeft}"
+               TextColor="#5E5E5E"
+               Margin="{StaticResource RegistrationLeftArrowMargin}">
+
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoBackAsyncCommand}"/>
+            </Label.GestureRecognizers>
+
+        </Label>
+
+        <Image Aspect="AspectFit" Source="registration_rules_image.svg"/>
+
+        <Label Text="Bienvenue dans Maxicrush !"
+               FontSize="18"
+               HorizontalTextAlignment="Center"
+               Margin="0, 5, 0, 0"
+               Style="{StaticResource BaseHeaderLabel}"/>
+
+        <Label Text="Veuillez s’il vous plaît respecter les quelques règles suivantes quand vous utilisez l’application"
+               FontSize="14"
+               HorizontalTextAlignment="Center"
+               Margin="0, 10, 0, 0"
+               Style="{StaticResource CaptionLabel}"/>
+
+        <Grid RowDefinitions="*, *"
+              ColumnDefinitions="*, *"
+              RowSpacing="10"
+              ColumnSpacing="15"
+              HeightRequest="150"
+              Margin="0, 40, 0, 0">
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Be cool."
+                       FontSize="16"
+                       Style="{StaticResource BaseHeaderLabel}"
+                       Margin="10, 0, 0, 0"/>
+                <Frame Padding="4"
+                       BorderColor="#BEBEBE">
+                    <Label Text="Soyez chill, respecter et traîter les autres avec respect et dignité"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
+                           FontSize="10"
+                           Style="{StaticResource CaptionLabel}"/>
+                </Frame>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5"
+                                 Grid.Column="1">
+                <Label Text="Be yourself."
+                       FontSize="16"
+                       Style="{StaticResource BaseHeaderLabel}"
+                       Margin="10, 0, 0, 0"/>
+                <Frame Padding="4"
+                       BorderColor="#BEBEBE">
+                    <Label Text="Soyez vous-même. Utilisez des photos et une bio qui vous ressemble !"
+                           FontSize="10"
+                           TextColor="#878080"
+                           Style="{StaticResource CaptionLabel}"/>
+                </Frame>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5"
+                                 Grid.Row="1">
+                <Label Text="Be safe."
+                       FontSize="16"
+                       Style="{StaticResource BaseHeaderLabel}"
+                       Margin="10, 0, 0, 0"/>
+                <Frame Padding="4"
+                       BorderColor="#BEBEBE">
+                    <Label Text="Ne donnez pas d’information personnelle trop rapidement."
+                           FontSize="10"
+                           TextColor="#878080"
+                           Style="{StaticResource CaptionLabel}"/>
+                </Frame>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5"
+                                 Grid.Column="1"
+                                 Grid.Row="1">
+                <Label Text="Be active."
+                       FontSize="16"
+                       Style="{StaticResource BaseHeaderLabel}"
+                       Margin="10, 0, 0, 0"/>
+                <Frame Padding="4"
+                       BorderColor="#BEBEBE">
+                    <Label Text="Signaler les nudes et les comportements irrespectueux "
+                           FontSize="10"
+                           TextColor="#878080"
+                           Style="{StaticResource CaptionLabel}"/>
+                </Frame>
+            </VerticalStackLayout>
+
+        </Grid>
+
+        <Button Text="Je comprends"
+                Style="{StaticResource PrimaryButton}"
+                Margin="0, 40, 0, 0"
+                Command="{Binding GotoWhatIsYourNameViewCommand}"/>
+
+        <Label Text="Terms of Use and Private Policy"
+               HorizontalTextAlignment="Center"
+               Style="{StaticResource CaptionLabel}"
+               Margin="0, 20, 0, 0"/>
+
+    </VerticalStackLayout>
+    
+</ContentPage>

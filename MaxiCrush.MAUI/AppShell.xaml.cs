@@ -1,16 +1,22 @@
-using MaxiCrush.MAUI.Views;
+﻿using MaxiCrush.MAUI.MVVM.ViewModels;
+using MaxiCrush.MAUI.MVVM.Views;
 
-namespace MaxiCrush.MAUI;
-
-public partial class AppShell : Shell
+namespace MaxiCrush.MAUI
 {
-	public AppShell()
-	{
-		InitializeComponent();
+    public partial class AppShell : Shell
+    {
+        public AppShell()
+        {
+            InitializeComponent();
 
-        Routing.RegisterRoute(nameof(AccountRecuperationPage), typeof(AccountRecuperationPage));
-		Routing.RegisterRoute(nameof(EmailRegistrationPage), typeof(EmailRegistrationPage));
-		Routing.RegisterRoute(nameof(PersonnalDataRegistrationPage), typeof(PersonnalDataRegistrationPage));
-		Routing.RegisterRoute(nameof(EmailConfirmationPage), typeof(EmailConfirmationPage));
+            Routing.RegisterRoute(nameof(RecoverAccountView), typeof(RecoverAccountView));
+            Routing.RegisterRoute(nameof(WhatIsYourEmailView), typeof(WhatIsYourEmailView));
+            Routing.RegisterRoute(nameof(WhatIsYourCodeView), typeof(WhatIsYourCodeView));
+            Routing.RegisterRoute(nameof(RegistrationRulesView), typeof(RegistrationRulesView));
+            Routing.RegisterRoute(nameof(WhatIsYourNameView), typeof(WhatIsYourNameView));
+            Routing.RegisterRoute(nameof(WhatIsYourBirthdayView), typeof(WhatIsYourBirthdayView));
+            Routing.RegisterRoute(nameof(WhatIsYourGenderView), typeof(WhatIsYourGenderView));
+            Routing.RegisterRoute(nameof(WhatIsYourGenderInterestView), typeof(WhatIsYourGenderInterestView));
+        }
     }
 }

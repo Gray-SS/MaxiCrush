@@ -1,11 +1,10 @@
-﻿using Android.Views;
-using MaxiCrush.MAUI.Views;
-using CommunityToolkit.Mvvm;
+﻿using CommunityToolkit.Maui.Core;
+using MaxiCrush.MAUI.MVVM.ViewModels;
+using MaxiCrush.MAUI.MVVM.Views;
+using MaxiCrush.MAUI.Services;
+using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
 using CommunityToolkit.Maui;
-using MaxiCrush.MAUI.Services;
-using Java.Sql;
-using MaxiCrush.Rest;
 
 namespace MaxiCrush.MAUI
 {
@@ -16,29 +15,43 @@ namespace MaxiCrush.MAUI
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .ConfigureSyncfusionCore()
                 .UseMauiCommunityToolkit()
+                .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                    fonts.AddFont("materialdesignicons-webfont.ttf", "IconFont");
-                    fonts.AddFont("NexaDemo-Bold.ttf", "NexaBold");
-                    fonts.AddFont("NexaDemo-Light.ttf", "NexaLight");
-                    fonts.AddFont("NexaTextDemo-Light.ttf", "NexaTextLight");
-                    fonts.AddFont("NexaTextDemo-Bold.ttf", "NexaTextBold");
                 });
 
-            builder.Services.AddSingleton(Connectivity.Current);
-            builder.Services.AddSingleton(new RestClient(RestClient.HostType.Localhost));
+            builder.Services.AddScoped<IAlertDisplayer, AlertDisplayer>();
+            builder.Services.AddSingleton<IUserBuilder, UserBuilder>();
 
-            builder.Services.AddSingleton<UserBuilder>();
-            builder.Services.AddSingleton<AccountRecuperationPage>();
-            builder.Services.AddSingleton<EmailConfirmationPage>();
-            builder.Services.AddSingleton<EmailRegistrationPage>();
+            builder.Services.AddTransient<WelcomeView>();
+            builder.Services.AddTransient<WelcomeViewModel>();
 
-            builder.Services.AddTransient<WelcomePage>();
-            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddTransient<WhatIsYourEmailView>();
+            builder.Services.AddTransient<WhatIsYourEmailViewModel>();
+
+            builder.Services.AddTransient<WhatIsYourCodeView>();
+            builder.Services.AddTransient<WhatIsYourCodeViewModel>();
+
+            builder.Services.AddTransient<RegistrationRulesView>();
+            builder.Services.AddTransient<RegistrationRulesViewModel>();
+
+            builder.Services.AddTransient<WhatIsYourNameView>();
+            builder.Services.AddTransient<WhatIsYourNameViewModel>();
+
+            builder.Services.AddTransient<WhatIsYourBirthdayView>();
+            builder.Services.AddTransient<WhatIsYourBirthdayViewModel>();
+
+            builder.Services.AddTransient<WhatIsYourGenderView>();
+            builder.Services.AddTransient<WhatIsYourGenderViewModel>();
+
+            builder.Services.AddTransient<WhatIsYourGenderInterestView>();
+
+#if DEBUG
+            builder.Logging.AddDebug();
+#endif
 
             return builder.Build();
         }

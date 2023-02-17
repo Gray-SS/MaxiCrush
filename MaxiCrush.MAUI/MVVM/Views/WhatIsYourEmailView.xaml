@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:RegistrationPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers"
+                         xmlns:views="clr-namespace:MaxiCrush.MAUI.MVVM.Views"
+                         xmlns:viewModels="clr-namespace:MaxiCrush.MAUI.MVVM.ViewModels"
+                         xmlns:controls="clr-namespace:MaxiCrush.MAUI.Controls"
+                         xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+                         x:Class="MaxiCrush.MAUI.MVVM.Views.WhatIsYourEmailView"
+                         x:DataType="viewModels:WhatIsYourEmailViewModel"
+                         Command="{Binding GoNextCommand}"
+                         Title="WhatIsYourEmailView">
+
+    <VerticalStackLayout>
+        
+        <Label Text="Quel est votre adresse UCL ?"
+               Style="{StaticResource BaseHeaderLabel}"/>
+
+        <Label Text="Votre adresse sera utilisée afin de prouver votre appartenance à l’université"
+               Margin="0, 10, 0, 0"
+               Style="{StaticResource CaptionLabel}"/>
+
+        <sf:SfTextInputLayout Style="{StaticResource PrimaryInputLayout}">
+
+            <Entry Style="{StaticResource PrimaryEntry}"
+                       Keyboard="Email"
+                       Placeholder="Entre ton email"
+                       Text="{Binding Email, Mode=OneWayToSource}"
+                       x:Name="entry"/>
+            
+        </sf:SfTextInputLayout>
+
+        <Label Text="Appuie sur Continuer pour recevoir un email de la part de MaxiCrush avec un code de vérification. L’adresse UCL vérifiée pourra être utilisé pour te connecter."
+               Margin="0, 10, 0, 0"
+               Style="{StaticResource CaptionLabel}"/>
+
+    </VerticalStackLayout>
+
+</controls:RegistrationPage>

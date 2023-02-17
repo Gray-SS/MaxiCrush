@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MaxiCrush.MAUI.Helpers"
+             x:Class="MaxiCrush.MAUI.Controls.RegistrationPage"
+             BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+             x:Name="page">
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid RowDefinitions="Auto, *, Auto"
+                  Margin="{StaticResource RegistrationViewsMargin}">
+
+                <Button Text="{Static helpers:IconFont.ArrowLeft}"
+                        Style="{StaticResource BackButton}"
+                        Clicked="Button_Clicked"/>
+
+                <ContentPresenter Grid.Row="1"/>
+
+                <Button Text="Continuer"
+                        Style="{StaticResource PrimaryButton}"
+                        Grid.Row="2"
+                        Margin="0, 30, 0, 0"
+                        Clicked="GoNextButtonClicked"/>
+
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+</ContentPage>
